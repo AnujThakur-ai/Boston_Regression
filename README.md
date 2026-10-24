@@ -1,32 +1,17 @@
-# 🏡 Boston Housing Price Prediction Pipeline
+# Boston Housing Regression Experiments
 
-A production-grade machine learning project implementing custom scikit-learn pipelines to predict residential housing prices.
+Regression notebooks exploring house-price prediction with the Boston Housing dataset. The project compares Decision Tree and Random Forest approaches and includes preprocessing and feature-selection experiments.
 
-## 🎯 Project Overview
-The objective of this project is to build a robust, reproducible regression pipeline to predict house values (`MEDV`). The project focuses on data leakage prevention, modular pipeline design, feature selection based on tree importance, and comparative analysis between baseline Decision Trees and Random Forests.
+## Contents
 
-## 🔑 Project Findings & Methodology
-1. **Bias & Redundancy Reduction:** Dropped demographic column `B` to mitigate algorithmic bias and dropped `CHAS` based on low predictive feature importance ($\approx 0.17\%$).
-2. **Dominant Drivers:** Feature importance analysis revealed that `RM` (average rooms) and `LSTAT` (% lower status population) drive **~81.8%** of model predictions.
-3. **Outlier Resilience:** Utilized tree ensemble models (**RandomForestRegressor**) to handle high-range outliers naturally without requiring monotonic skewness transformations on feature spaces.
-4. **Pipeline Encapsulation:** Enforced custom `ColumnDropper` transformers directly inside `sklearn.pipeline.Pipeline` objects to allow direct prediction on raw, unseen test data.
+- `Boston_EDA.ipynb` and `Boston_EDA-Copy1.ipynb` — exploratory analysis.
+- `Boston_pipeLine.ipynb` — regression pipeline and model comparison.
+- `housing.csv` — dataset file.
+- `decisiontree.pkl` and `randomforest.pkl` — saved model artifacts.
+- `Evaluation matrix.png` — evaluation visualization.
 
-## 📊 Performance Comparison
-| Model | R² Score | RMSE | MAE |
-| :--- | :---: | :---: | :---: |
-| **Decision Tree Regressor** | 0.8775 | 8.9798 | 2.2176 |
-| **Random Forest Regressor** | **0.8900** | **8.0661** | **2.0410** |
+## Run
 
-> **Key Takeaway:** Random Forest achieved a higher $R^2$ score ($89.00\%$) and lower error metrics across all tests by averaging ensemble predictions to reduce variance.
+Open the notebooks in Jupyter or VS Code and run the cells in order. Install the libraries imported by the notebook in your Python environment; common dependencies include pandas, NumPy, scikit-learn, Matplotlib, and seaborn.
 
-## 🚀 How to Run
-```bash
-# Clone repository
-git clone [https://github.com/your-username/boston-housing-pipeline.git](https://github.com/your-username/boston-housing-pipeline.git)
-cd boston-housing-pipeline
-
-# Install dependencies
-pip install pandas numpy scikit-learn matplotlib seaborn joblib
-
-# Run training & evaluation script
-python main.py
+The notebooks use the dataset and split defined in their code. Review the notebook for its evaluation setup before comparing results. This project is for educational use.
